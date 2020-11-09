@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,6 +32,14 @@ public class Racional {
             this.den= 1;
         else
             this.den = den;
+    }
+    public void establecer (){
+        Random numero = new Random();
+        int num =0, den = 0; 
+        num = numero.nextInt(9);
+        den = numero.nextInt(9); 
+        this.num = num;
+        this.den = den;
     }
     public void imprimir(){
         System.out.println("[" + num + ", " + den + "]");
