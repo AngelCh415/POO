@@ -46,7 +46,7 @@ public class Racional {
     public void mult(Racional x){
         num = num * x.num;
         den = den * x.den;
-        
+        reducir();
     }
     public void div(Racional x){
         num = num * x.den; 
@@ -56,43 +56,40 @@ public class Racional {
         }
         else
         den = den * x.num;
-        //reducir();
+        reducir();
     }
     public void suma (Racional x){
         //a/b + c/d = (ad+cb)/bd
         num = (num*x.den) + (x.num *den);
         den = den * x.den;
         //(ad+cb)/ bd -> 
-        //reducir();
+        reducir();
     }
     public void resta (Racional x){
         //a/b - c/d = (ad-cb)/bd
         num = (num*x.den) - (x.num *den);
         den = den * x.den;
         //(ad-cb)/ bd -> 
-       // reducir();
+        reducir();
     }
     public void reducir(){
-        int mcm = mcm(den,num);
-        this.den /=mcm;
-        this.num /=mcm;
+        int dividir=mcd();
+        num/=dividir;
+        den/=dividir;
     }
-    public int mcm(int num1, int num2){
-        int multiplo = 1; 
-        int i = 2; 
-        if(num1==0) return num2;
-        while(i <= num1 || i <= num2)
-        {
-            if(num1%i==0 || num2%i==0)
-            {
-            multiplo*=i;
-            if(num1%i==0) num1=num1/i;
-            if(num2%i==0) num2=num2/i;
-            }
-            else
-                i=i+1;               
-        } 
-        return multiplo;
+    public int mcd(){
+        int u=Math.abs(num);
+        int v=Math.abs(den);
+        if(v==0){
+            return u;
+        }
+        int r;
+        while(v!=0){
+            r=u%v;
+            u=v;
+            v=r;
+        }
+        return u;
     }
     public int igual(Racional A){
         if(num == A.num && den == A.den )

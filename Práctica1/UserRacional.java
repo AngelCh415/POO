@@ -50,21 +50,21 @@ public class UserRacional {
             System.out.println("Ingrese el denominador: ");
             Scanner consola = new Scanner (System.in);
             int den = consola.nextInt();
-            System.out.println(opcion);
             if(opcion==0){
                 A.suma(B);
-                A.imprimir();
+                
             }else if(opcion==1){
                 A.resta(B);
-                A.imprimir();
+                
             }else if(opcion==2){
                 A.div(B);
-                A.imprimir();
+                
             }else{
                 A.mult(B);
-                A.imprimir();
+                
             }
             R.establecer(num,den);
+            R.reducir();
             int igual = R.igual(A);
             if(igual ==1){
                 System.out.println("Bien hecho usario :D");
