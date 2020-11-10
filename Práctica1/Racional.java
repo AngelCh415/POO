@@ -13,7 +13,7 @@ import java.util.Random;
 public class Racional {
     private int num; 
     private int den; 
-    
+    private int multiplo; //Minimo comun multiplo
     public Racional(){
         num =1;
         den = 1;
@@ -78,18 +78,18 @@ public class Racional {
         den/=dividir;
     }
     public int mcd(){
-        int u=Math.abs(num);
+        multiplo=Math.abs(num);
         int v=Math.abs(den);
         if(v==0){
-            return u;
+            return multiplo;
         }
         int r;
         while(v!=0){
-            r=u%v;
-            u=v;
+            r=multiplo%v;
+            multiplo=v;
             v=r;
         }
-        return u;
+        return multiplo;
     }
     public int igual(Racional A){
         if(num == A.num && den == A.den )
