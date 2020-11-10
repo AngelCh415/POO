@@ -37,8 +37,19 @@ public class Racional {
         Random numero = new Random();
         int num =0, den = 0; 
         num = numero.nextInt(10);
+        while(den==0) //Con esto verificamos que el denominador nunca sera 0
         den = numero.nextInt(10); 
-        establecer(num, den);
+        establecer(num,den);
+    }
+    public void establecer (char a){
+        /*Esta funcion resuelve los conflictos con la division */
+        Random numero = new Random();
+        int num = 0, den = 0;
+        while(num==0)
+            num = numero.nextInt(10);
+        while(den==0)
+            den = numero.nextInt(10); //Con esto verificamos que el denominador nunca sera 0
+        establecer(num,den);
     }
     public void imprimir(){
         System.out.println("[" + num + ", " + den + "]");

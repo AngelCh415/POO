@@ -34,10 +34,13 @@ public class UserRacional {
         Racional R = new Racional();
         int opcion = 0; 
         int repetir = 1;
+        int total =0;
+        int correctas =0;
         Random azar = new Random();
         while(repetir==1){
+            total++;
             A.establecer();
-            B.establecer();
+            B.establecer('a'); //Problema con B en la division ya que conocemos que a/b / c/d == ad/bc donde c puede ser 0 y si es el caso el denominador es 0 
             opcion = azar.nextInt(4);
             System.out.println("Hola :D");
             System.out.println("La operación que harás es  "+operacion[opcion]+ " de estos dos números racionales ");
@@ -68,6 +71,9 @@ public class UserRacional {
             int igual = R.igual(A);
             if(igual ==1){
                 System.out.println("Bien hecho usario :D");
+                System.out.println("Su respuesta es equivalente a: " );
+                R.imprimir();
+                correctas++;
             }else{
                 opcion = azar.nextInt(5);
                 System.out.println("Respuesta incorrecta :c");
@@ -75,12 +81,19 @@ public class UserRacional {
                 A.imprimir();
                 System.out.println("La respuesta de usted es: ");
                 R.imprimir();
-                System.out.println("aqui tienes una frase "+ frase[opcion]);
+                System.out.println("aqui tienes una frase motivadora: ");
                 //Frase motivadora 
+                System.out.println(frase[opcion]);
             }
             System.out.println("¿Quieres intentarlo? 1)Sí 2)No");
             Scanner res = new Scanner(System.in); 
             repetir = res.nextInt();
         }
+        //total -> 100
+        //correctas
+        correctas*=100; 
+        correctas/=total;
+        System.out.println("Su porcentaje de correctas es: " + correctas + " %");
+        System.out.println("Vuelva pronto :D");
     }
 }
