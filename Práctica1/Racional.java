@@ -103,7 +103,7 @@ public class Racional {
         return multiplo;
     }
     public int igual(Racional A){
-        if(num == A.num && den == A.den )
+        if(num == A.num && den == A.den || (num==0 && A.num==0) )
         return 1;
         else
         return 0;
