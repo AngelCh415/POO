@@ -67,4 +67,7 @@ public class Str {
     private void Imprimir(){
         System.out.println("Como no tienen tamaño igual es imposible que contengan los mismos caracteres");
     }
+    public void Palabras(String A){
+        
+    }
 }
