@@ -35,12 +35,36 @@ public class Str {
         }
     }
     private void Cubetas (String A, String B){
-        char [] cubA = new char [256];
-        char [] cubB = new char [256];
-        
-
+        int [] cubA = new int [256];
+        int [] cubB = new int [256];
+        int ban = 0;
+        int AsciiValue;
+        for(int i=0; i<256;i++){
+            cubB[i]=0;
+            cubA[i]=0;
+        }
+        for(int i=0; i<B.length(); i++){
+            char aux = B.charAt(i);
+            AsciiValue = (int) aux;
+            cubB[AsciiValue] ++;
+            aux = A.charAt(i); 
+            AsciiValue = (int) aux;
+            cubA [AsciiValue]++;
+        }
+        for(int i=0; i<256;i++){
+            if(cubA[i]!=cubB[i]) ban++;
+        }
+        if(ban==0) System.out.println("Contienen los mismos caracteres ");
+        else {
+            System.out.println("No contienen los mismos caracteres.");
+            System.out.println("Se diferencian por " + ban + "caracteres");
+        }
     }
     public void Contenedor(String A, String B){
-        Cubetas(A,B);
+        if(A.length()!=B.length()) Imprimir();
+        else Cubetas(A,B);
+    }
+    private void Imprimir(){
+        System.out.println("Como no tienen tamaño igual es imposible que contengan los mismos caracteres");
     }
 }

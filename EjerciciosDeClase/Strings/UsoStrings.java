@@ -14,7 +14,7 @@ public class UsoStrings {
         controlador.Comparador(A, B);
     }
     static void Conitiene(){
-        Str controlador = new str();
+        Str controlador = new Str();
         String A, B; 
         System.out.println("Ingrese la primera cadena");
         Scanner entrada = new Scanner(System.in);
