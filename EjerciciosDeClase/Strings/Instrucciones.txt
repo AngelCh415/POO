@@ -1,0 +1,1 @@
+En esta parte del repositorio resolveremos los siguientes problemas: 1)Saber si una cadena A es subfijo, prefijo o no es nada de una cadena B. 2) Saber si en una cadena B estan incluidos los caracteres de A sin importar orden. 
