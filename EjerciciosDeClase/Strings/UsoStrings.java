@@ -24,7 +24,7 @@ public class UsoStrings {
         B = entrada2.nextLine();
         controlador.Contenedor(A, B);
     }
-    static void Contiene(){
+    static void Conjunto(){
         String A; 
         Str conjunto = new Str();
         System.out.println("Ingrese una cadena de palabras. ");
