@@ -17,7 +17,8 @@ public class Str {
     public void Comparador(String A, String B){
         /*
         Podemos decir que algunos sufijos y prefijos se pueden escribir iniciando con mayusculas
-        
+        Carril
+        ferrocarril
         */
         A = A.toLowerCase();
         B = B.toLowerCase();
@@ -34,7 +35,7 @@ public class Str {
             System.out.println("Es prefijo");
         }
         else if(i==2){
-            System.out.println("Es subfijo");
+            System.out.println("Es sufijo");
         }
         else{
             System.out.println("No es nada");
@@ -49,56 +50,70 @@ public class Str {
         Como tal no es necesario ya que Sa != sa
         A = A.toLowerCase();
         B = B.toLowerCase();*/
+        int res =0; 
+        res = B.length() -A.length();
         for(int i=0; i<256;i++){
             cubB[i]=0;
             cubA[i]=0;
         }
+    
         for(int i=0; i<B.length(); i++){
             char aux = B.charAt(i);
             AsciiValue = (int) aux;
             cubB[AsciiValue] ++;
-            aux = A.charAt(i); 
+            if(i<A.length()){
+                aux = A.charAt(i); 
             AsciiValue = (int) aux;
             cubA [AsciiValue]++;
+            }
+            
         }
         for(int i=0; i<256;i++){
-            if(cubA[i]!=cubB[i]) ban++;
+            if(cubA[i]!=cubB[i]) {
+                ban++;
+            }
         }
-        if(ban==0) System.out.println("Contienen los mismos caracteres ");
+        if(ban==res) ban *=0;
+        if(ban==0) System.out.println("A esta en B");
         else {
-            System.out.println("No contienen los mismos caracteres.");
+            System.out.println("A no esta en B.");
             System.out.println("Se diferencian por " + ban + "caracteres");
         }
     }
     public void Contenedor(String A, String B){
-        if(A.length()!=B.length()) Imprimir();
+        if(A.length()>B.length()) Imprimir();
         else Cubetas(A,B);
     }
     private void Imprimir(){
-        System.out.println("Como no tienen tamaño igual es imposible que contengan los mismos caracteres");
+        System.out.println("Como A es mayor a B es imposible que contengan los mismos caracteres");
     }
-    private void Imprimir(int total, int maximo, int minimo, int []arre){
+    private void Imprimir(int total, int maximo,  int []arre){
         System.out.println("Palabras totales " + total);
         System.out.println("La palabra más larga tiene " +maximo +" caracteres");
-        System.out.println("La palabra más corta tiene " + minimo +" caracteres");
+        int x=0;
         System.out.println("La frecuencia es: ");
         for(int i=0; i< 20000000; i++){
             if(arre[i]!=0){
+                if(x==0){
+                    int minimo = i;
+                System.out.println("La palabra más corta tiene " + minimo +" caracteres");
+                    x++;
+            }
                 System.out.println("Hay " + arre[i] + " palabras con " +i + " caracteres de longitud.");
             }
         }
     }
     public void Palabras(String A){
-        int mini = 20000000, maxi=-1, pal_total=0,lact=0;
+        int maxi=-1, pal_total=0,lact=0;
         char a='a', b='a';
         int [] arre = new int[20000000];
         for(int i=0; i<20000000; i++) arre[i]=0;
         for(int i=0; i<A.length();i++){
             a = A.charAt(i);
-            if(a==' ' && A.charAt(i-1)!= ' '){
+            if(a==' '){
                 pal_total++;
                 if(lact>maxi) maxi = lact;
-                else if(lact<mini) mini = lact;
+                
                 arre[lact]++;
                 lact =0;
                 b=a;
@@ -109,10 +124,9 @@ public class Str {
         if(a!=' '){
             pal_total++; 
             if(lact>maxi) maxi = lact;
-            else if(lact<mini) mini = lact;
             arre[lact]++;
         }
-        if(mini==20000000) mini = maxi;
-        Imprimir(pal_total,maxi,mini,arre);
+        
+        Imprimir(pal_total,maxi,arre);
     }
 }
