@@ -4,74 +4,47 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Rectangulo{
-  private String n;
+  private String nombre;
   private Punto a;
   private Punto b;
 
   public Rectangulo (){
-    n = "";
+    nombre = "Incognito";
+    a = new Punto ();
+    b = new Punto ();
+  }
+    
+  public Rectangulo (String nom){
+    nombre = nom;
     a = new Punto ();
     b = new Punto ();
   }
 
-  public Rectangulo (String s){
-    n = s;
-    a = new Punto ();
-    b = new Punto ();
+  public Rectangulo (String nom, Punto p1, Punto p2){
+    nombre = nom;
+    a = p1;
+    b = p2;
+  }
+  public Rectangulo(String nom, double x1, double y1, double x2, double y2){
+    nombre=nom;
+    a= new Punto(x1,y1);
+    b= new Punto(x2,y2);
   }
 
-  public Rectangulo (String s, Punto x){
-    n = s;
-    a = x;
-    b = new Punto ();
+  public Rectangulo(double x1, double y1, double x2, double y2){
+    nombre= "";
+    a= new Punto(x1,y1);
+    b= new Punto(x2,y2);
   }
 
-  public Rectangulo (String s, Punto x, Punto y){
-    n = s;
-    a = x;
-    b = y;
+
+  public Rectangulo (Rectangulo rec){
+      this.nombre = rec.nombre;
+      this.a = rec.a; 
+      this.b = rec.b;
+      
   }
 
-  public Rectangulo (String s, int x, int y){
-    n = s;
-    a = new Punto (x, y);
-    b = new Punto ();
-  }
-
-  public Rectangulo (String s, int x, int y, int x1, int y1){
-    n = s;
-    a = new Punto (x, y);
-    b = new Punto (x1, y1);
-  }
-
-  public Rectangulo (Punto x){
-    n = "";
-    a = x;
-    b = new Punto ();
-  }
-  
-  public Rectangulo (Punto x, Punto y){
-    n = "";
-    a = x;
-    b = y;
-  }
-  
-  public Rectangulo (double x, double y){
-    n = "";
-    a = new Punto (x, y);
-    b = new Punto ();
-  }
-
-  public Rectangulo (double x1, double x2, double y1, double y2){
-    n = "";
-    a = new Punto (x1, y1);
-    b = new Punto (x2, y2);
-  }
-
-  public void moverRect (Punto A, Punto B){
-    a = A;
-    b = B;
-  }
 
   public Punto ga (){
     return a;
@@ -82,7 +55,7 @@ public class Rectangulo{
   }
   
   public String gn (){
-    return n;
+    return nombre;
   }
 
   public void sa (Punto x){
@@ -94,11 +67,11 @@ public class Rectangulo{
   }
 
   public void sn (String s){
-    n = s;
+    nombre = s;
   }
 
   public String toString (){
-    return n + ":[" + a.toString () + "," + b.toString () + "]";
+    return nombre + ":[" + a.toString () + "," + b.toString () + "]";
   }
 
   public Rectangulo inter (Rectangulo r){
@@ -131,20 +104,33 @@ public class Rectangulo{
   }
 
   public double area (){
-    double ar = b.gx () - a.gx () * b.gy () - a.gy ();
-    return ar < 0 ? ar * -1 : ar;
+    double ar = (b.gx () - a.gx ()) * (b.gy () - a.gy ());
+    if(ar<0) ar*=-1; //Por si hay un area negativa
+    return ar;
   }
+  
+ 
 
-  public int comparar (Rectangulo r){
-    return T == R ? 0 : T < R ? -1 : 1;
-  }
-
-  public int comparar (Triangulo r){
-    return T == R ? 0 : T < R ? -1 : 1;
+  public int comparar (Rectangulo B){
+      /*
+      -1 = A < B
+       0 = A=B
+       1 = A > B 
+       */
+    double area1 = this.area();
+    double area2 = B.area();
+    if(area1<area2) return -1; 
+    else if( area1==area2) return 0;
+    else return 1;
   }
 
   public int cuadRect (){
     return a.cuadrante ();
   }
-  
+
+  public void moverRect (Punto p1, Punto p2){
+    a = p1;
+    b = p2;
+  }
+
 }

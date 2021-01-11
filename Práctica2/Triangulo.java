@@ -12,9 +12,9 @@ public class Triangulo {
 
 	public Triangulo(double x1, double x2, double y1,double y2,double z1, double z2){
 		n="";
-		a=Punto(x1,x2);
-		b=Punto(y1,y2);
-		c=Punto(z1,z2);
+		a=new Punto(x1,x2);
+		b=new Punto(y1,y2);
+		c=new Punto(z1,z2);
 	}
 
 	public Punto ga(){ return a;}
@@ -26,7 +26,7 @@ public class Triangulo {
 	public void sc(Punto x){ c = x; }
 
 	public double area()
-		{ return ( a.gx()(b.gy()-c.gy()) + b.gx()(c.gy()-a.gy()) + c.gx()(a.gy()-b.gy()) )/2;}
+		{ return ( a.gx()*(b.gy()-c.gy()) + b.gx()*(c.gy()-a.gy()) + c.gx()*(a.gy()-b.gy()) )/2;}
 	public int comparar(Triangulo t)
 		{ return area()>t.area()? 1: area()<t.area() -1:0; }
 	public int comparar(Rectangulo t)
@@ -41,25 +41,25 @@ public class Triangulo {
 		if( d1 <= this.ga().distancia(this.gb()) ){
 			double p2 = 1 - ( d1 / this.ga().distancia(this.gb()) );
 			if( d2 <= this.ga().distancia(this.gc()) * p2 ) return true;
-		}else{ return false }
+		}else{ return false; }
 	}
 
 	public Triangulo interseccion( Triangulo t ){
 		int counta = 0;
 		int countb = 0;
-		if(this.puntoDentro(t.ga()) counta++;
-		if(this.puntoDentro(t.gb()) counta++;
-		if(this.puntoDentro(t.gc()) counta++;
-		if(t.puntoDentro(this.gc()) countb++;
-		if(t.puntoDentro(this.gc()) countb++;
-		if(t.puntoDentro(this.gc()) countb++;
+		if(this.puntoDentro(t.ga())) counta++;
+		if(this.puntoDentro(t.gb()) )counta++;
+		if(this.puntoDentro(t.gc()) )counta++;
+		if(t.puntoDentro(this.gc()) )countb++;
+		if(t.puntoDentro(this.gc()) )countb++;
+		if(t.puntoDentro(this.gc()) )countb++;
 		if( counta == 0 || counta == 2 || countb == 0 || countb==2) return null;
 		if((counta==1 || counta==3) && (countb!=1 || countb!=3)){
 			//Aqui vemos con los puntos del primero
 		}else{
 			//Aqui vemoc con los puntos del segundo
 		}
-		
+		return null;
 	}
 }
 
