@@ -155,12 +155,34 @@ public static void main( String[] args ){
                                                 consola = new Scanner(System.in);
                                                 y2 = consola.nextInt();
                                                 B = new Rectangulo("Rec2", x1,y1,x2,y2);
-                                                
+                                                int comparacionRect= A.comparar(B);
+                                                if(comparacionRect==-1){
+                                                        System.out.println("El rectangulo A es menor al rectango B");
+                                                }
+                                                else if(comparacionRect==0){
+                                                        System.out.println("Ambos rectangulos son iguales");
+                                                }
+                                                else{
+                                                        System.out.println("El rectangulo A es mayor al rectangulo B");
+                                                }
                                         break; 
                                         case 6: 
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);
+                                                int cuadrante = A.cuadRect();
+                                                System.out.println("El rectangulo se encuentra en el cuadrante: "+cuadrante);
                                         break;
                                         default:
-                                                System.out.print("Error al elegir");
+                                                System.out.println("Error al elegir");
                                         break;
                                 }
                         break;
