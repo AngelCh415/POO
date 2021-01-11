@@ -3,19 +3,178 @@ public class main{
 public static void main( String[] args ){
         int opcion;
         int control;
-        bool repetir; 
+        int repetir; 
+        int x1,y1,x2,y2;
+        Rectangulo A,B;
         opcion = 0; 
-        repetir = true; 
-        while(repetir){
+        repetir = 1; 
+        while(repetir==1){
                 Scanner consola = new Scanner (System.in);
                 System.out.println("Aprendiendo Geometria");
                 System.out.println("Ingrese una opción \n 1)Rectángulo \n 2)Triángulo");
-                Scanner consola = new Scanner (System.in);
+                /* Menú
+                Menu rect
+                1) Dibujar rectangulo
+                2) Union de rectangulos
+                3) Interseccion de rectangulos
+                4) Buscar punto dentro de un rectangulo
+                5) Comparar dos rectangulos
+                6) Saber en que cuadrante esta un rectangulo
+                Menu triang
+                1) Dibujar triangulo
+                2) Interseccion de triangulos
+                
+                */
+                consola = new Scanner (System.in);
                 opcion = consola.nextInt();
-                System.out.println("¿Desea repetir? \n 1)Si \n 2)No");
+                switch(opcion){
+                        case 1:
+                                System.out.println("1)Dibujar un rectangulo y su Area");
+                                System.out.println("2)Union de 2 rectangulos");
+                                System.out.println("3)Interseccion de 2 rectangulos");
+                                System.out.println("4)Buscar un punto dentro de un rectangulo");
+                                System.out.println("5)Comparar dos rectangulos");
+                                System.out.println("6)Saber en que cuadrante esta un rectangulo");                                
+                                consola = new Scanner (System.in);
+                                opcion = consola.nextInt();
+                                switch(opcion){
+                                        case 1:
+                                                System.out.println("Ingrese los puntos xy (esquina superior)");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior)");
+                                                consola = new Scanner(System.in);
+                                                x2 =consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 =consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);                                                
+                                                System.out.println(A.toString());
+                                                System.out.println("El Area es: ");
+                                                System.out.println(A.area());
+                                        break; 
+                                        case 2: 
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 2");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 2");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                B = new Rectangulo("Rec2", x1,y1,x2,y2);
+                                                Rectangulo UAB = A.union(B);
+                                                System.out.println("Mostrando todas las uniones posibles");
+                                                System.out.println(UAB.toString());
+                                        break;
+                                        case 3:
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 2");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 2");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                B = new Rectangulo("Rec2", x1,y1,x2,y2);
+                                                Rectangulo IAB = A.inter(B);
+                                                System.out.println("Mostrando todas las intersecciones posibles");
+                                                System.out.println(IAB.toString());
+                                        break; 
+                                        case 4:
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);
+                                                System.out.println("Ingrese la coordenada x y despues y");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                Punto p = new Punto("p",x1,y1);
+                                                if(A.dentroDe(p)==true){
+                                                        System.out.println("El punto esta dentro del rectangulo");
+                                                }else{
+                                                        System.out.println("El punto no esta dentro del rectangulo");
+                                                }
+                                        break; 
+                                        case 5:
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 1");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);
+                                                System.out.println("Ingrese los puntos xy (esquina superior) del Rectangulo 2");
+                                                consola = new Scanner(System.in);
+                                                x1 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 2");
+                                                consola = new Scanner(System.in);
+                                                x2 = consola.nextInt(); 
+                                                consola = new Scanner(System.in);
+                                                y2 = consola.nextInt();
+                                                B = new Rectangulo("Rec2", x1,y1,x2,y2);
+                                                
+                                        break; 
+                                        case 6: 
+                                        break;
+                                        default:
+                                                System.out.print("Error al elegir");
+                                        break;
+                                }
+                        break;
+                        case2:
+                        break; 
+                        
+                        default:
+                        System.out.println("Error al elegir");
+                        break;
+                }
+                System.out.println("¿Desea repetir? \n 1)Si \n Cualquier otro Numero:No");
                 Scanner consola1 = new Scanner (System.in);
                 control = consola1.nextInt();
-                if(control!=1) repetir = false; 
+                if(control!=1) repetir*=0 ; 
         }
         
 
