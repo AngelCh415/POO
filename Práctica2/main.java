@@ -1,5 +1,26 @@
+import java.util.Scanner;
 public class main{
-    public static void main( String[] args ){
+public static void main( String[] args ){
+        int opcion;
+        int control;
+        bool repetir; 
+        opcion = 0; 
+        repetir = true; 
+        while(repetir){
+                Scanner consola = new Scanner (System.in);
+                System.out.println("Aprendiendo Geometria");
+                System.out.println("Ingrese una opción \n 1)Rectángulo \n 2)Triángulo");
+                Scanner consola = new Scanner (System.in);
+                opcion = consola.nextInt();
+                System.out.println("¿Desea repetir? \n 1)Si \n 2)No");
+                Scanner consola1 = new Scanner (System.in);
+                control = consola1.nextInt();
+                if(control!=1) repetir = false; 
+        }
+        
+
+        
+        /*
         Rectangulo r1c1 = new Rectangulo( "r1c1", 3,7,2,4 );
         Rectangulo r2c1 = new Rectangulo( "r2c1", 5,10,3,7 );
         Rectangulo r1c2 = new Rectangulo( "r1c2", -3,-9,8,2 );
@@ -50,5 +71,5 @@ public class main{
         System.out.println( i2.toString() );
         System.out.println( i3.toString() );
         System.out.println( i4.toString() );
-    }
+        }*/
 }
