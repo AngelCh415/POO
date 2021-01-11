@@ -83,7 +83,7 @@ public class Rectangulo{
       (Arrays.asList (a.gy (), b.gy (), r.a.gy (), r.b.gy ()));
     Collections.sort (ex);
     Collections.sort (ey);
-    return new Rectangulo (ex.get (1), ex.get (2), ey.get (1), ey.get (2));
+    return new Rectangulo (ex.get (1), ey.get (1), ex.get (2), ey.get (2));
   }
 
   public Rectangulo union (Rectangulo r){
@@ -95,7 +95,7 @@ public class Rectangulo{
       (Arrays.asList (a.gy (), b.gy (), r.a.gy (), r.b.gy ()));
     Collections.sort (ex);
     Collections.sort (ey);
-    return new Rectangulo (ex.get (0), ex.get (3), ey.get (0), ey.get (3));
+    return new Rectangulo (ex.get (0), ey.get (0), ex.get (3), ey.get (3));
   }
 
   public boolean dentroDe (Punto p){
