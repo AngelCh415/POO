@@ -476,7 +476,7 @@ public static void main( String[] args ){
                                         C.toString();
                                         System.out.println("Cambiando los valores del triangulo");
                                         C.movTriang(A1,B1,C1); 
-                                        C.toString();
+                                        System.out.print(C.toString());
                                         break;
                                         default:
                                                 System.out.println("Error al elegir");
