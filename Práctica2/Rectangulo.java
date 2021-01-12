@@ -74,7 +74,7 @@ public class Rectangulo{
     return nombre + ":[" + a.toString () + "," + b.toString () + "]";
   }
 
-  public Rectangulo inter (Rectangulo r){
+  public Rectangulo inter (Rectangulo r){ //Suponiendo que los rectangulos siempre se intersecan
     List < Double > ex =
       new ArrayList < Double >
       (Arrays.asList (a.gx (), b.gx (), r.a.gx (), r.b.gx ()));
