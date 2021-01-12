@@ -25,16 +25,21 @@ public class Rectangulo{
     a = p1;
     b = p2;
   }
-  public Rectangulo(String nom, double x1, double y1, double x2, double y2){
+  public Rectangulo(String nom, int x1, int y1, int x2, int y2){
     nombre=nom;
-    a= new Punto(x1,y1);
+    a = new Punto(x1,y1);
     b= new Punto(x2,y2);
   }
 
-  public Rectangulo(double x1, double y1, double x2, double y2){
+  public Rectangulo(int x1, int y1, int x2, int y2){
     nombre= "";
-    a= new Punto(x1,y1);
-    b= new Punto(x2,y2);
+    a = new Punto(x1,y1);
+    b = new Punto(x2,y2);
+  }
+
+  public Rectangulo (Punto p1, Punto p2){
+    a = p1;
+    b = p2;
   }
 
 
@@ -44,7 +49,6 @@ public class Rectangulo{
       this.b = rec.b;
       
   }
-
 
   public Punto ga (){
     return a;
@@ -69,53 +73,61 @@ public class Rectangulo{
   public void sn (String s){
     nombre = s;
   }
-
   public String toString (){
     return nombre + ":[" + a.toString () + "," + b.toString () + "]";
   }
-
+  public Rectangulo union (Rectangulo r){ //tomamos para el punto 1, con los valores xy mas chicos. El segundo punto con los calores xy mas lejanos
+    int x1, y1, x2, y2;
+    Punto punto1,punto2; 
+    x1 = Math.min(this.a.getX(), r.a.getX());
+    x2 = Math.min(this.b.getX(), r.b.getX());
+    x1 = Math.min(x1, x2);
+    y1 = Math.min(this.b.getY(), r.b.getY());
+    y2 = Math.min(this.a.getY(), r.b.getY()); 
+    y1 =Math.min(y1, y2);
+    punto1 = new Punto(x1,y1);
+    x1 = Math.max(this.a.getX(), r.a.getX());
+    x2 = Math.max(this.b.getX(), r.b.getX());
+    x2 = Math.max(x1, x2);
+    y1 = Math.max(this.b.getY(), r.b.getY());
+    y2 = Math.max(this.a.getY(), r.b.getY()); 
+    y2 =Math.max(y1, y2);
+    punto2 = new Punto (x2,y2); 
+    return new Rectangulo (punto1, punto2);
+  }
   public Rectangulo inter (Rectangulo r){ //Suponiendo que los rectangulos siempre se intersecan
-    List < Double > ex =
-      new ArrayList < Double >
-      (Arrays.asList (a.gx (), b.gx (), r.a.gx (), r.b.gx ()));
-    List < Double > ey =
-      new ArrayList < Double >
-      (Arrays.asList (a.gy (), b.gy (), r.a.gy (), r.b.gy ()));
-    Collections.sort (ex);
-    Collections.sort (ey);
-    return new Rectangulo (ex.get (1), ey.get (1), ex.get (2), ey.get (2));
+    //agarramos los de enmedio
+    int x1, y1, x2, y2;
+    Punto punto1,punto2; 
+    x1 = Math.min(this.a.getX(), r.a.getX());
+    x2 = Math.min(this.b.getX(), r.b.getX());
+    x1 = Math.min(x1, x2);
+    y1 = Math.min(this.b.getY(), r.b.getY());
+    y2 = Math.min(this.a.getY(), r.b.getY()); 
+    y1 =Math.max(y1, y2);
+    punto1 = new Punto(x1,y1);
+    x1 = Math.max(this.a.getX(), r.a.getX());
+    x2 = Math.max(this.b.getX(), r.b.getX());
+    x2 = Math.max(x1, x2);
+    y1 = Math.max(this.b.getY(), r.b.getY());
+    y2 = Math.max(this.a.getY(), r.b.getY()); 
+    y2 =Math.min(y1, y2);
+    punto2 = new Punto (x2,y2); 
+    return new Rectangulo (punto1, punto2);
   }
-
-  public Rectangulo union (Rectangulo r){
-    List < Double > ex =
-      new ArrayList < Double >
-      (Arrays.asList (a.gx (), b.gx (), r.a.gx (), r.b.gx ()));
-    List < Double > ey =
-      new ArrayList < Double >
-      (Arrays.asList (a.gy (), b.gy (), r.a.gy (), r.b.gy ()));
-    Collections.sort (ex);
-    Collections.sort (ey);
-    return new Rectangulo (ex.get (0), ey.get (0), ex.get (3), ey.get (3));
-  }
-
   public boolean dentroDe (Punto p){
-    return (p.gx () > a.gx () && p.gx () < b.gx () &&
-	    p.gy () > a.gy () && p.gy () < b.gy ());
+    return (p.getX () > a.getX () && p.getX () < b.getX () && p.getY () > a.getY () && p.getY () < b.getY ());
   }
-
   public double area (){
-    double ar = (b.gx () - a.gx ()) * (b.gy () - a.gy ());
+    double ar = (b.getX () - a.getX ()) * (b.getY () - a.getY ());
     if(ar<0) ar*=-1; //Por si hay un area negativa
     return ar;
   }
-  
- 
-
   public int comparar (Rectangulo B){
       /*
       -1 = A < B
-       0 = A=B
-       1 = A > B 
+      0 = A=B
+      1 = A > B 
        */
     double area1 = this.area();
     double area2 = B.area();
@@ -123,14 +135,11 @@ public class Rectangulo{
     else if( area1==area2) return 0;
     else return 1;
   }
-
   public int cuadRect (){
     return a.cuadrante ();
   }
-
   public void moverRect (Punto p1, Punto p2){
     a = p1;
     b = p2;
   }
-
 }
