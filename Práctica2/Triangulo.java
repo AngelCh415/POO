@@ -133,18 +133,24 @@ public class Triangulo {
 	public int cuadTriang (){
 		return a.cuadrante ();
 	  }
-	
+	private int orientar (Punto a, Punto b, Punto c){
+		return ((a.getX() - c.getX()) * (b.getY() - c.getY())) - ((a.getY() - c.getY()) * (b.getX() - c.getX()));
+	}
 	public boolean puntoDentro( Punto p ){
-		/*Punto v1 = this.gb().add(this.ga().neg());
-		Punto v2 = this.gc().add(this.ga().neg());
-		double d1 = ( v2.gx()( p.gy() + this.a.gy() ) + v2.gy()*( p.gx() - this.ga.gx() ))/( v1.gx()*v2.gy() - v1.gy()*v2.gx() )
-		double d2 = ( p.gy() - this.ga.gy() - d1*v1.gy() ) / v2.gy();
-		if( d1 || d2 < 0 ) return false;
-		if( d1 <= this.ga().distancia(this.gb()) ){
-			double p2 = 1 - ( d1 / this.ga().distancia(this.gb()) );
-			if( d2 <= this.ga().distancia(this.gc()) * p2 ) return true;
-		}else{ return false }*/
-		return true;
+		int orientacionT, orientacionTp1, orientacionTp2, orientacionTp3; 
+		
+		orientacionT = orientar(this.a, this.b, this.c); 
+		orientacionTp1 = orientar(this.a, this.b, p);
+		orientacionTp2 = orientar(this.b, this.c, p);
+		orientacionTp3 = orientar(this.c, this.a,p);
+		if(orientacionT >0){
+			if(orientacionTp1>0 && orientacionTp2>0 && orientacionTp3>0) return true;
+			else return false;
+		}
+		else{
+			if(orientacionTp1<0 && orientacionTp2<0 && orientacionTp3<0) return true;
+			else return false;
+		}
 	}
 
 	public Triangulo interseccion( Triangulo t ){/*
