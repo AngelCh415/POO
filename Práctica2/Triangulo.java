@@ -59,7 +59,7 @@ public class Triangulo {
 		distBC = b.distancia(c);
 		distCA = c.distancia(a);
 		if(distAB==distBC && distBC==distCA) return 0; // Son Equilateros
-		else if(distAB != distBC && distBC!= distCA && distAB != distCA) return 1; //Son Escalenos
+		else if(distAB!=distBC && distBC!=distCA && distAB!=distCA) return 1; //Son Escalenos
 		else return 2; //Son Isoceles
 	}
 	public Punto ga(){ 
@@ -83,15 +83,59 @@ public class Triangulo {
 		c = p; 
 	}
 
-	public double area()
-		{ return ( a.gx()(b.gy()-c.gy()) + b.gx()(c.gy()-a.gy()) + c.gx()(a.gy()-b.gy()) )/2;}
-	public int comparar(Triangulo t)
-		{ return area()>t.area()? 1: area()<t.area() -1:0; }
-	public int comparar(Triangulo t)
-		{ return area()>t.area()? 1: area()<t.area() -1:0; }
+	public String toString (){
+		return nombre + ":[" + a.toString () + "," + b.toString () + "," + c.toString() + "]";
+	  }
+
+	public double area(){ 
+		//Usando la formula de Heron 
+		double da,db,dc,sp, Area; 
+		da = a.distancia(b);
+		db = b.distancia(c);
+		dc = c.distancia(a); 
+		sp = (da+db+dc)/2;
+		Area = Math.sqrt(sp * (sp-da) * (sp-db) * (sp-dc));
+		return Area;
+	}
+
+	public int comparar(Triangulo t){ 
+		/*
+      -1 = A < B
+      0 = A=B
+      1 = A > B 
+       */
+		double area1, area2; 
+		area1 = this.area(); 
+		area2 = t.area(); 
+		if(area1<area2) return -1;
+		else if(area1==area2) return 0; 
+		else return 1;
+	}
+	public int comparar(Rectangulo rec){ 
+		/*
+      -1 = A < B
+      0 = A=B
+      1 = A > B 
+       */
+		double area1, area2; 
+		area1 = this.area(); 
+		area2 = rec.area(); 
+		if(area1<area2) return -1;
+		else if(area1==area2) return 0; 
+		else return 1;
+	}
+	public void movTriang (Punto a1, Punto a2, Punto a3){
+		this.a = a1;
+		this.b = a2; 
+		this.c = a3;
+	}
+
+	public int cuadTriang (){
+		return a.cuadrante ();
+	  }
 	
 	public boolean puntoDentro( Punto p ){
-		Punto v1 = this.gb().add(this.ga().neg());
+		/*Punto v1 = this.gb().add(this.ga().neg());
 		Punto v2 = this.gc().add(this.ga().neg());
 		double d1 = ( v2.gx()( p.gy() + this.a.gy() ) + v2.gy()*( p.gx() - this.ga.gx() ))/( v1.gx()*v2.gy() - v1.gy()*v2.gx() )
 		double d2 = ( p.gy() - this.ga.gy() - d1*v1.gy() ) / v2.gy();
@@ -99,10 +143,11 @@ public class Triangulo {
 		if( d1 <= this.ga().distancia(this.gb()) ){
 			double p2 = 1 - ( d1 / this.ga().distancia(this.gb()) );
 			if( d2 <= this.ga().distancia(this.gc()) * p2 ) return true;
-		}else{ return false }
+		}else{ return false }*/
+		return true;
 	}
 
-	public Triangulo interseccion( Triangulo t ){
+	public Triangulo interseccion( Triangulo t ){/*
 		int counta = 0;
 		int countb = 0;
 		if(this.puntoDentro(t.ga())) counta++;
@@ -116,8 +161,8 @@ public class Triangulo {
 			//Aqui vemos con los puntos del primero
 		}else{
 			//Aqui vemoc con los puntos del segundo
-		}
-		
+		}*/	
+		return null;
 	}
 }
 

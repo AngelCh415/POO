@@ -120,18 +120,31 @@ public class Rectangulo{
     double ar = (b.getX () - a.getX ()) * (b.getY () - a.getY ());
     return Math.abs(ar);
   }
-  public int comparar (Rectangulo B){
+  
+  public int comparar (Rectangulo rect){
       /*
       -1 = A < B
       0 = A=B
       1 = A > B 
        */
     double area1 = this.area();
-    double area2 = B.area();
+    double area2 = rect.area();
     if(area1<area2) return -1; 
     else if( area1==area2) return 0;
     else return 1;
   }
+  public int comparar (Triangulo trian){
+    /*
+    -1 = A < B
+    0 = A=B
+    1 = A > B 
+     */
+  double area1 = this.area();
+  double area2 = trian.area();
+  if(area1<area2) return -1; 
+  else if( area1==area2) return 0;
+  else return 1;
+}
   public int cuadRect (){
     return a.cuadrante ();
   }
