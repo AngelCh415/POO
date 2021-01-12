@@ -1,11 +1,15 @@
 import java.util.Scanner;
 public class main{
 public static void main( String[] args ){
+        String []tipoTriang = new String [] {"Equilatero", "Escaleno", "Isóceles"}; 
         int opcion;
         int control;
         int repetir; 
-        double x1,y1,x2,y2;
+        int x1,y1,x2,y2;
         Rectangulo A,B;
+        Triangulo C,D; 
+        int ax1,bx1, cx1, ay2,by2,cy2;
+        Punto A1,B1, C1;
         opcion = 0; 
         repetir = 1; 
         while(repetir==1){
@@ -23,7 +27,11 @@ public static void main( String[] args ){
                 Menu triang
                 1) Dibujar triangulo
                 2) Interseccion de triangulos
-                
+                3) Buscar punto dentro de un triangulo
+                4) Comparar dos triangulos 
+                5) Saber en que cuadrante esta el triangulo
+                6) Comparar triangulo con rectangulo
+                7)Mover un triangulo
                 */
                 consola = new Scanner (System.in);
                 opcion = consola.nextInt();
@@ -221,7 +229,54 @@ public static void main( String[] args ){
                                 }
                         break;
                         case 2:
-                                System.out.println("En construccion");  
+                        System.out.println("1)Dibujar un triangulo y su Area");
+                                System.out.println("2)Comparar un triangulo con un rectangulo");
+                                System.out.println("3)Interseccion de 2 triangulos");
+                                System.out.println("4)Buscar un punto dentro de un triangulo");
+                                System.out.println("5)Comparar dos triangulo");
+                                System.out.println("6)Saber en que cuadrante esta un triangulo");  
+                                System.out.println("7)Mover triangulo");
+                                consola = new Scanner(System.in);
+                                opcion = consola.nextInt(); 
+                                switch(opcion){
+                                        case 1: 
+                                        System.out.println("Ingrese la coordenada xy del punto A");
+                                        consola = new Scanner (System.in);
+                                        ax1 = consola.nextInt();
+                                        consola = new Scanner (System.in);
+                                        ay2 = consola.nextInt(); 
+                                        A1 = new Punto(ax1, ay2);
+                                        System.out.println("Ingrese la coordenada xy del punto B");
+                                        consola = new Scanner (System.in);
+                                        bx1 = consola.nextInt();
+                                        consola = new Scanner (System.in);
+                                        by2 = consola.nextInt(); 
+                                        B1 = new Punto(bx1, by2);
+                                        System.out.println("Ingrese la coordenada xy del punto C");
+                                        consola = new Scanner (System.in);
+                                        cx1 = consola.nextInt();
+                                        consola = new Scanner (System.in);
+                                        cy2 = consola.nextInt(); 
+                                        C1 = new Punto(cx1, cy2);
+                                        C = new Triangulo("Triangulo", A1, B1, C1); 
+                                        System.out.println(C.toString() + "con área de: " + C.area() + " y por la construccion es un triángulo" + tipoTriang[C.tipTriang()]);
+                                        break; 
+                                        case 2: 
+                                        break;
+                                        case 3: 
+                                        break;
+                                        case 4: 
+                                        break;
+                                        case 5: 
+                                        break;
+                                        case 6: 
+                                        break;
+                                        case 7: 
+                                        break;
+                                        default:
+                                                System.out.println("Error al elegir");
+                                        break;
+                                }
                         break; 
                         
                         default:
@@ -229,66 +284,9 @@ public static void main( String[] args ){
                         break;
                 }
                 System.out.println("¿Desea repetir? \n 1)Si \n Cualquier otro Numero:No");
-                Scanner consola1 = new Scanner (System.in);
-                control = consola1.nextInt();
+                control = consola.nextInt();
                 if(control!=1) repetir*=0 ; 
                 }
         }
         
 }
-
-
-        
-        /*
-        Rectangulo r1c1 = new Rectangulo( "r1c1", 3,7,2,4 );
-        Rectangulo r2c1 = new Rectangulo( "r2c1", 5,10,3,7 );
-        Rectangulo r1c2 = new Rectangulo( "r1c2", -3,-9,8,2 );
-        Rectangulo r2c2 = new Rectangulo( "r2c2", -4,-7,6,4 );
-        Rectangulo r1c3 = new Rectangulo( "r1c3", -7,-3,-5,-2 );
-        Rectangulo r2c3 = new Rectangulo( "r2c3", -6,-4,-7,-3 );
-        Rectangulo r1c4 = new Rectangulo( "r1c4", 2,5,-6,-3);
-        Rectangulo r2c4 = new Rectangulo( "r2c4", 4,8,-8,-4 );
-
-	System.out.println("Rectangulos");
-        System.out.println( r1c1.toString() );
-        System.out.println( r2c1.toString() );
-        System.out.println( r1c2.toString() );
-        System.out.println( r2c2.toString() );
-        System.out.println( r1c3.toString() );
-        System.out.println( r2c3.toString() );
-        System.out.println( r1c4.toString() );
-        System.out.println( r2c4.toString() );
-
-	System.out.println("Areas");
-        System.out.println( r1c1.area() );
-        System.out.println( r2c1.area() );
-        System.out.println( r1c2.area() );
-        System.out.println( r2c2.area() );
-        System.out.println( r1c3.area() );
-        System.out.println( r2c3.area() );
-        System.out.println( r1c4.area() );
-        System.out.println( r2c4.area() );
-
-        Rectangulo u1 = r1c1.union(r2c1);
-        Rectangulo u2 = r1c2.union(r2c2);
-        Rectangulo u3 = r1c3.union(r2c3);
-        Rectangulo u4 = r1c4.union(r2c4);
-
-	System.out.println("Uniones");
-        System.out.println( u1.toString() );
-        System.out.println( u2.toString() );
-        System.out.println( u3.toString() );
-        System.out.println( u4.toString() );
-
-        Rectangulo i1 = r1c1.inter(r2c1);
-        Rectangulo i2 = r1c2.inter(r2c2);
-        Rectangulo i3 = r1c3.inter(r2c3);
-        Rectangulo i4 = r1c4.inter(r2c4);
-
-	System.out.println("Intersecciones");
-        System.out.println( i1.toString() );
-        System.out.println( i2.toString() );
-        System.out.println( i3.toString() );
-        System.out.println( i4.toString() );*/
-
-

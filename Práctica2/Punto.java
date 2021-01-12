@@ -57,9 +57,13 @@ public class Punto{
     public double distancia(){
         return Math.sqrt( x*x + y*y );
     }
-    public double distancia(int i, int j){
-        return Math.sqrt( Math.pow(x-i,2) + Math.pow(y-j,2) );
+    public double distancia(Punto A){
+        double d; 
+        d = Math.pow(x-A.getX(),2) + Math.pow(y-A.getY(),2);
+        d = Math.sqrt(d);
+        return d;
     }
+
     public int cuadrante(){
         if(x>=0 && y>=0) return 1; 
         else if(x<0 && y>=0) return 2; 

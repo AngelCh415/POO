@@ -3,33 +3,91 @@ public class Triangulo {
 	private Punto a;
 	private Punto b;
 	private Punto c;
-	private String n;
+	private String nombre;
 
-	public Triangulo()
-		{n="";a=new Punto();b=new Punto();c=new Punto();}
-	public Triangulo(Punto x, Punto y, Punto z)
-		{n="";a=x;b=y;c=z;}
-
-	public Triangulo(double x1, double x2, double y1,double y2,double z1, double z2){
-		n="";
-		a=Punto(x1,x2);
-		b=Punto(y1,y2);
-		c=Punto(z1,z2);
+	public Triangulo (){
+		nombre = "Incognito";
+		a = new Punto();
+		b = new Punto();
+		c = new Punto();
+	  }
+		
+	  public Triangulo (String nom){
+		nombre = nom;
+		a = new Punto();
+		b = new Punto();
+		c = new Punto();
+	  }
+	
+	  public Triangulo (String nom, Punto p1, Punto p2, Punto p3){
+		nombre = nom;
+		a = p1;
+		b = p2;
+		c = p3;
+	  }
+	
+	  public Triangulo (Punto p1, Punto p2, Punto p3){
+		nombre= "Incognito";
+		a = p1;
+		b = p2;
+		b = p3;
+	  }
+	
+	  public Triangulo(String nom, int x1, int y1, int x2, int y2, int x3, int y3){
+		nombre=nom;
+		a = new Punto(x1,y1);
+		b = new Punto(x2,y2);
+		c = new Punto(x3,y3);
+	  }
+	
+	  public Triangulo(int x1, int y1, int x2, int y2, int x3, int y3){
+		nombre= "Incognito";
+		a = new Punto(x1,y1);
+		b = new Punto(x2,y2);
+		c = new Punto(x3,y3);
+	  }
+	
+	  public Triangulo (Triangulo triang){
+		  this.nombre = triang.nombre;
+		  this.a = triang.a; 
+		  this.b = triang.b;
+		  this.c = triang.c;	  
+	  }
+	public int tipTriang (){
+		double distAB, distBC, distCA;
+		distAB = a.distancia(b);
+		distBC = b.distancia(c);
+		distCA = c.distancia(a);
+		if(distAB==distBC && distBC==distCA) return 0; // Son Equilateros
+		else if(distAB != distBC && distBC!= distCA && distAB != distCA) return 1; //Son Escalenos
+		else return 2; //Son Isoceles
 	}
-
-	public Punto ga(){ return a;}
-	public Punto gb(){ return b;}
-	public Punto gc(){ return c;}
-	public String gn(){ return n;}
-	public void sa(Punto x){ a = x; }
-	public void sb(Punto x){ b = x; }
-	public void sc(Punto x){ c = x; }
+	public Punto ga(){ 
+		return a;
+	}
+	public Punto gb(){ 
+		return b;
+	}
+	public Punto gc(){ return c;
+	}
+	public String gn(){ 
+		return nombre;
+	}
+	public void sa(Punto p){ 
+		a = p; 
+	}
+	public void sb(Punto p){ 
+		b = p; 
+	}
+	public void sc(Punto p){ 
+		c = p; 
+	}
 
 	public double area()
 		{ return ( a.gx()(b.gy()-c.gy()) + b.gx()(c.gy()-a.gy()) + c.gx()(a.gy()-b.gy()) )/2;}
 	public int comparar(Triangulo t)
 		{ return area()>t.area()? 1: area()<t.area() -1:0; }
-	public int comparar(Rectangulo t)
+	public int comparar(Triangulo t)
 		{ return area()>t.area()? 1: area()<t.area() -1:0; }
 	
 	public boolean puntoDentro( Punto p ){
@@ -47,12 +105,12 @@ public class Triangulo {
 	public Triangulo interseccion( Triangulo t ){
 		int counta = 0;
 		int countb = 0;
-		if(this.puntoDentro(t.ga()) counta++;
-		if(this.puntoDentro(t.gb()) counta++;
-		if(this.puntoDentro(t.gc()) counta++;
-		if(t.puntoDentro(this.gc()) countb++;
-		if(t.puntoDentro(this.gc()) countb++;
-		if(t.puntoDentro(this.gc()) countb++;
+		if(this.puntoDentro(t.ga())) counta++;
+		if(this.puntoDentro(t.gb()) )counta++;
+		if(this.puntoDentro(t.gc()) )counta++;
+		if(t.puntoDentro(this.gc()) )countb++;
+		if(t.puntoDentro(this.gc()) )countb++;
+		if(t.puntoDentro(this.gc()) )countb++;
 		if( counta == 0 || counta == 2 || countb == 0 || countb==2) return null;
 		if((counta==1 || counta==3) && (countb!=1 || countb!=3)){
 			//Aqui vemos con los puntos del primero
