@@ -1,8 +1,3 @@
-import java.util.Collections;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Rectangulo{
   private String nombre;
   private Punto a;
@@ -25,6 +20,13 @@ public class Rectangulo{
     a = p1;
     b = p2;
   }
+
+  public Rectangulo (Punto p1, Punto p2){
+    nombre= "Incognito";
+    a = p1;
+    b = p2;
+  }
+
   public Rectangulo(String nom, int x1, int y1, int x2, int y2){
     nombre=nom;
     a = new Punto(x1,y1);
@@ -32,16 +34,10 @@ public class Rectangulo{
   }
 
   public Rectangulo(int x1, int y1, int x2, int y2){
-    nombre= "";
+    nombre= "Incognito";
     a = new Punto(x1,y1);
     b = new Punto(x2,y2);
   }
-
-  public Rectangulo (Punto p1, Punto p2){
-    a = p1;
-    b = p2;
-  }
-
 
   public Rectangulo (Rectangulo rec){
       this.nombre = rec.nombre;
@@ -73,9 +69,11 @@ public class Rectangulo{
   public void sn (String s){
     nombre = s;
   }
+
   public String toString (){
     return nombre + ":[" + a.toString () + "," + b.toString () + "]";
   }
+
   public Rectangulo union (Rectangulo r){ //tomamos para el punto 1, con los valores xy mas chicos. El segundo punto con los calores xy mas lejanos
     int x1, y1, x2, y2;
     Punto punto1,punto2; 
@@ -120,8 +118,7 @@ public class Rectangulo{
   }
   public double area (){
     double ar = (b.getX () - a.getX ()) * (b.getY () - a.getY ());
-    if(ar<0) ar*=-1; //Por si hay un area negativa
-    return ar;
+    return Math.abs(ar);
   }
   public int comparar (Rectangulo B){
       /*
