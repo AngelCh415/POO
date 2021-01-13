@@ -114,7 +114,7 @@ public class Rectangulo{
     return new Rectangulo (punto1, punto2);
   }
   public boolean dentroDe (Punto p){
-    return (p.getX () > a.getX () && p.getX () < b.getX () && p.getY () > a.getY () && p.getY () < b.getY ());
+    return (p.getX () >= a.getX () && p.getX () <= b.getX () && p.getY () >= a.getY () && p.getY () <= b.getY ());
   }
   public double area (){
     double ar = (b.getX () - a.getX ()) * (b.getY () - a.getY ());

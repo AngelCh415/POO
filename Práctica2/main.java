@@ -42,7 +42,7 @@ public static void main( String[] args ){
                                 System.out.println("3)Interseccion de 2 rectangulos");
                                 System.out.println("4)Buscar un punto dentro de un rectangulo");
                                 System.out.println("5)Comparar dos rectangulos");
-                                System.out.println("6)Saber en que cuadrante esta un rectangulo");  
+                                System.out.println("6)Saber en que cuadrante esta un rectangulo usando la esquina inferior");  
                                 System.out.println("7)Mover rectangulo");
                                 consola = new Scanner (System.in);
                                 opcion = consola.nextInt();
@@ -234,7 +234,7 @@ public static void main( String[] args ){
                                 System.out.println("3)Interseccion de 2 triangulos");
                                 System.out.println("4)Buscar un punto dentro de un triangulo");
                                 System.out.println("5)Comparar dos triangulo");
-                                System.out.println("6)Saber en que cuadrante esta un triangulo");  
+                                System.out.println("6)Saber en que cuadrante esta un triangulo usando el primer punto");  
                                 System.out.println("7)Mover triangulo");
                                 consola = new Scanner(System.in);
                                 opcion = consola.nextInt(); 

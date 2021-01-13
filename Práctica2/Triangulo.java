@@ -148,27 +148,14 @@ public class Triangulo {
 			else return false;
 		}
 		else{
-			if(orientacionTp1<0 && orientacionTp2<0 && orientacionTp3<0) return true;
+			if(orientacionTp1<=0 && orientacionTp2<=0 && orientacionTp3<=0) return true;
 			else return false;
 		}
 	}
 
-	public Triangulo interseccion( Triangulo t ){/*
-		int counta = 0;
-		int countb = 0;
-		if(this.puntoDentro(t.ga())) counta++;
-		if(this.puntoDentro(t.gb()) )counta++;
-		if(this.puntoDentro(t.gc()) )counta++;
-		if(t.puntoDentro(this.gc()) )countb++;
-		if(t.puntoDentro(this.gc()) )countb++;
-		if(t.puntoDentro(this.gc()) )countb++;
-		if( counta == 0 || counta == 2 || countb == 0 || countb==2) return null;
-		if((counta==1 || counta==3) && (countb!=1 || countb!=3)){
-			//Aqui vemos con los puntos del primero
-		}else{
-			//Aqui vemoc con los puntos del segundo
-		}*/	
-		return null;
+	public Triangulo interseccion( Triangulo t ){//Usando el caso de que un triangulo este dentro del otro
+		if(this.puntoDentro(t.a)== true && this.puntoDentro(t.b)== true && this.puntoDentro(t.c)== true) return t;
+		else return null;
 	}
 }
 
