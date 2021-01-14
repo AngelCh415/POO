@@ -337,7 +337,7 @@ public static void main( String[] args ){
                                         C1 = new Punto(cx1, cy2);
                                         D = new Triangulo("Triangulo2", A1, B1, C1);
                                         Triangulo Res = C.interseccion(D); 
-                                        if(Res==null) System.out.print("No hay interseccion");
+                                        if(Res==null) System.out.print("No hay interseccion de los triangulos");
                                         else System.out.println(Res.toString());
                                         break;
                                         case 4:  

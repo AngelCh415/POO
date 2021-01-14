@@ -132,7 +132,7 @@ public class Triangulo {
 
 	public int cuadTriang (){
 		return a.cuadrante ();
-	  }
+	}
 	private int orientar (Punto a, Punto b, Punto c){
 		return ((a.getX() - c.getX()) * (b.getY() - c.getY())) - ((a.getY() - c.getY()) * (b.getX() - c.getX()));
 	}
@@ -143,18 +143,19 @@ public class Triangulo {
 		orientacionTp1 = orientar(this.a, this.b, p);
 		orientacionTp2 = orientar(this.b, this.c, p);
 		orientacionTp3 = orientar(this.c, this.a,p);
-		if(orientacionT >0){
-			if(orientacionTp1>0 && orientacionTp2>0 && orientacionTp3>0) return true;
+		if(orientacionT >=0){
+			if(orientacionTp1>=0 && orientacionTp2>=0 && orientacionTp3>=0) return true;
 			else return false;
 		}
 		else{
-			if(orientacionTp1<=0 && orientacionTp2<=0 && orientacionTp3<=0) return true;
+			if(orientacionTp1<0 && orientacionTp2<0 && orientacionTp3<0) return true;
 			else return false;
 		}
 	}
 
 	public Triangulo interseccion( Triangulo t ){//Usando el caso de que un triangulo este dentro del otro
 		if(this.puntoDentro(t.a)== true && this.puntoDentro(t.b)== true && this.puntoDentro(t.c)== true) return t;
+		else if(t.puntoDentro(this.a)== true && t.puntoDentro(this.b)== true && t.puntoDentro(this.c)== true) return this;
 		else return null;
 	}
 }
