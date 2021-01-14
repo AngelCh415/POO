@@ -1,3 +1,8 @@
+/*
+Elaborado por: Chávez Morones Ángel Uriel 
+                & Pacheco Mijangos Mauricio Jesús
+*/
+
 import java.util.Scanner;
 public class User{
         private static Scanner consola;
