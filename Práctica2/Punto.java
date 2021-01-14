@@ -71,15 +71,4 @@ public class Punto{
         else return 4;
     }
     
-    public Punto neg(){
-            return new Punto( -1 * this.getX(), -1 * this.getY());
-        } 
-
-    public Punto add(Punto p){
-        return new Punto(this.getX() + p.getX(), this.getY() + p.getY());
-    }
-
-    public Punto clone(){ 
-        return new Punto( this.getX(), this.getY() ); 
-    }
 }
