@@ -5,14 +5,14 @@ public class Rectangulo{
 
   public Rectangulo (){
     nombre = "Incognito";
-    a = new Punto ();
-    b = new Punto ();
+    a = new Punto (0,0);
+    b = new Punto (1,1);
   }
     
   public Rectangulo (String nom){
     nombre = nom;
-    a = new Punto ();
-    b = new Punto ();
+    a = new Punto (0,0);
+    b = new Punto (1,1);
   }
 
   public Rectangulo (String nom, Punto p1, Punto p2){
@@ -42,31 +42,30 @@ public class Rectangulo{
   public Rectangulo (Rectangulo rec){
       this.nombre = rec.nombre;
       this.a = rec.a; 
-      this.b = rec.b;
-      
+      this.b = rec.b;  
   }
 
-  public Punto ga (){
+  public Punto geta (){
     return a;
   }
   
-  public Punto gb (){
+  public Punto getb (){
     return b;
   }
   
-  public String gn (){
+  public String getnombre (){
     return nombre;
   }
 
-  public void sa (Punto x){
+  public void seta (Punto x){
     a = x;
   }
   
-  public void sb (Punto y){
+  public void setb (Punto y){
     b = y;
   }
 
-  public void sn (String s){
+  public void setnombre (String s){
     nombre = s;
   }
 
@@ -78,48 +77,32 @@ public class Rectangulo{
     int x1, y1, x2, y2;
     Punto punto1,punto2; 
     x1 = Math.min(this.a.getX(), r.a.getX());
-    x2 = Math.min(this.b.getX(), r.b.getX());
-    x1 = Math.min(x1, x2);
-    y1 = Math.min(this.a.getY(), r.a.getY());
-    y2 = Math.min(this.b.getY(), r.b.getY()); 
-    y1 =Math.min(y1, y2);
-    punto1 = new Punto(x1,y1);
-    x1 = Math.max(this.a.getX(), r.a.getX());
     x2 = Math.max(this.b.getX(), r.b.getX());
-    x2 = Math.max(x1, x2);
-    y1 = Math.max(this.a.getY(), r.a.getY());
-    y2 = Math.max(this.b.getY(), r.b.getY()); 
-    y2 =Math.max(y1, y2);
+    y1 = Math.min(this.a.getY(), r.a.getY());
+    y2 = Math.max(this.b.getY(), r.b.getY());
+    punto1 = new Punto(x1,y1);
     punto2 = new Punto (x2,y2); 
-    return new Rectangulo (punto1, punto2);
+    return new Rectangulo ("Union",punto1, punto2);
   }
-  public Rectangulo inter (Rectangulo r){ //Suponiendo que los rectangulos siempre se intersecan
-    //agarramos los de enmedio
+  public Rectangulo inter (Rectangulo r){
     int x1, y1, x2, y2;
     Punto punto1,punto2, aux1, aux2, raux1, raux2;
+    //Puntos que faltan del rectangulo
     aux1 = new Punto (this.a.getX(), this.b.getY()); 
     aux2 = new Punto( this.b.getX(), this.a.getY()); 
     raux1 = new Punto (r.a.getX(), r.b.getY()); 
-    raux2 = new Punto( r.b.getX(), r.a.getY()); 
-    //Puntos que faltan del rectangulo 
-    if(r.dentroDe(this.a) == false && r.dentroDe(this.b) == false && r.dentroDe(aux1) == false && r.dentroDe(aux2) == false) return null;
-    else if(this.dentroDe(r.a) == false && this.dentroDe(r.b) == false && this.dentroDe(raux1) == false && this.dentroDe(raux2) == false) return null;
+    raux2 = new Punto( r.b.getX(), r.a.getY());
+
+    if((r.dentroDe(this.a) == false && r.dentroDe(this.b) == false && r.dentroDe(aux1) == false && r.dentroDe(aux2) == false) && 
+    (this.dentroDe(r.a) == false && this.dentroDe(r.b) == false && this.dentroDe(raux1) == false && this.dentroDe(raux2) == false)) return null;
     else{
-      x1 = Math.min(this.a.getX(), r.a.getX());
-      x2 = Math.min(this.b.getX(), r.b.getX());
-      x1 = Math.min(x1, x2);
-      y1 = Math.min(this.a.getY(), r.a.getY());
-      y2 = Math.min(this.b.getY(), r.b.getY()); 
-      y1 =Math.max(y1, y2);
-      punto1 = new Punto(x1,y1);
       x1 = Math.max(this.a.getX(), r.a.getX());
-      x2 = Math.max(this.b.getX(), r.b.getX());
-      x2 = Math.max(x1, x2);
+      x2 = Math.min(this.b.getX(), r.b.getX());
       y1 = Math.max(this.a.getY(), r.a.getY());
-      y2 = Math.max(this.b.getY(), r.b.getY()); 
-      y2 =Math.min(y1, y2);
+      y2 = Math.min(this.b.getY(), r.b.getY());
+      punto1 = new Punto(x1,y1);
       punto2 = new Punto (x2,y2); 
-      return new Rectangulo (punto1, punto2);
+      return new Rectangulo ("Interseccion",punto1, punto2);
     }
   }
   public boolean dentroDe (Punto p){

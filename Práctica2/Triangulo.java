@@ -7,16 +7,16 @@ public class Triangulo {
 
 	public Triangulo (){
 		nombre = "Incognito";
-		a = new Punto();
-		b = new Punto();
-		c = new Punto();
+		a = new Punto(0,0);
+		b = new Punto(0,1);
+		c = new Punto(1,0);
 	  }
 		
 	  public Triangulo (String nom){
 		nombre = nom;
-		a = new Punto();
-		b = new Punto();
-		c = new Punto();
+		a = new Punto(0,0);
+		b = new Punto(0,1);
+		c = new Punto(1,0);
 	  }
 	
 	  public Triangulo (String nom, Punto p1, Punto p2, Punto p3){
@@ -62,24 +62,24 @@ public class Triangulo {
 		else if(distAB!=distBC && distBC!=distCA && distAB!=distCA) return 1; //Son Escalenos
 		else return 2; //Son Isoceles
 	}
-	public Punto ga(){ 
+	public Punto geta(){ 
 		return a;
 	}
-	public Punto gb(){ 
+	public Punto getb(){ 
 		return b;
 	}
-	public Punto gc(){ return c;
+	public Punto getc(){ return c;
 	}
-	public String gn(){ 
+	public String getnombre(){ 
 		return nombre;
 	}
-	public void sa(Punto p){ 
+	public void seta(Punto p){ 
 		a = p; 
 	}
-	public void sb(Punto p){ 
+	public void setb(Punto p){ 
 		b = p; 
 	}
-	public void sc(Punto p){ 
+	public void setc(Punto p){ 
 		c = p; 
 	}
 

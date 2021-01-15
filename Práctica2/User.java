@@ -1,6 +1,6 @@
 /*
-Elaborado por: Chávez Morones Ángel Uriel 
-                & Pacheco Mijangos Mauricio Jesús
+Elaborado por: Chavez Morones Angel Uriel 
+                & Pacheco Mijangos Mauricio Jesus
 */
 
 import java.util.Scanner;
@@ -50,6 +50,7 @@ public static void main( String[] args ){
                                 System.out.println("5)Comparar dos rectangulos");
                                 System.out.println("6)Saber en que cuadrante esta un rectangulo");  
                                 System.out.println("7)Mover rectangulo");
+                                System.out.println("8)Comparar un rectangulo con un triangulo");
                                 opcion = consola.nextInt();
                                 switch(opcion){
                                         case 1:
@@ -98,8 +99,8 @@ public static void main( String[] args ){
                                                 y2 = consola.nextInt();
                                                 B = new Rectangulo("Rec2", x1,y1,x2,y2);
                                                 Rectangulo IAB = A.inter(B);
-                                                System.out.println("Mostrando todas las intersecciones posibles");
-                                                System.out.println(IAB.toString());
+                                                if(IAB == null) System.out.println("No hay interseccion");
+                                                else System.out.println("La interseccion es:" + IAB);
                                         break; 
                                         case 4:
                                                 System.out.println("Ingrese los puntos xy (esquina inferior) del Rectangulo 1");                                                
@@ -181,6 +182,32 @@ public static void main( String[] args ){
                                                 A.moverRect(p1, p2);
                                                 System.out.print(A.toString());
                                         break;
+                                        case 8: 
+                                                System.out.println("Ingrese los puntos xy (esquina inferior)");                                                
+                                                x1 = consola.nextInt();                                                 
+                                                y1 = consola.nextInt();
+                                                System.out.println("Ingrese los puntos xy (esquina superior)");                                                
+                                                x2 =consola.nextInt();                                                 
+                                                y2 =consola.nextInt();
+                                                A = new Rectangulo("Rec1", x1,y1,x2,y2);
+                                                System.out.println("Ingrese la coordenada xy del punto A");                                                
+                                                ax1 = consola.nextInt();                                                
+                                                ay2 = consola.nextInt(); 
+                                                A1 = new Punto(ax1, ay2);
+                                                System.out.println("Ingrese la coordenada xy del punto B");                                                
+                                                bx1 = consola.nextInt();                                                
+                                                by2 = consola.nextInt(); 
+                                                B1 = new Punto(bx1, by2);
+                                                System.out.println("Ingrese la coordenada xy del punto C");                                                
+                                                cx1 = consola.nextInt();                                                
+                                                cy2 = consola.nextInt(); 
+                                                C1 = new Punto(cx1, cy2);
+                                                C = new Triangulo("Triangulo", A1, B1, C1);
+                                                int compTR = A.comparar(C); 
+                                                if(compTR== -1) System.out.println("El triangulo es mas chico");
+                                                else if (compTR==0) System.out.println("El triangulo es igual que el triangulo" );
+                                                else System.out.println("El triangulo es mas grande");
+                                        break;
                                         default:
                                                 System.out.println("Error al elegir");
                                         break;
@@ -233,7 +260,7 @@ public static void main( String[] args ){
                                                 cy2 = consola.nextInt(); 
                                                 C1 = new Punto(cx1, cy2);
                                                 C = new Triangulo("Triangulo", A1, B1, C1);
-                                                int compTR = A.comparar(C); 
+                                                int compTR = C.comparar(A); 
                                                 if(compTR== -1) System.out.println("El rectangulo es mas chico");
                                                 else if (compTR==0) System.out.println("El rectangulo es igual que el triangulo" );
                                                 else System.out.println("El rectangulo es mas grande");
@@ -267,8 +294,8 @@ public static void main( String[] args ){
                                                 D = new Triangulo("Triangulo2", A1, B1, C1);
                                                 Triangulo Res = C.interseccion(D); 
                                                 if(Res==null) System.out.print("No hay interseccion");
-                                                else System.out.println(Res.toString());
-                                                break;
+                                                else System.out.println("La interseccion es: " + Res.toString());
+                                        break;
                                         case 4:  
                                                 System.out.println("Ingrese la coordenada xy del punto A");
                                                 ax1 = consola.nextInt();                                        
