@@ -1,0 +1,8 @@
+En esta práctica es una calculadora de números racionales, donde al usuario se le dará un operación al azar (suma, resta, multiplicación y división) y el usuario tendrá que dar el resultado de esta misma.
+
+Los números racionales serán generados aleatoriamente y en resultado se dará de la forma más simplificada. Si el usuario introduce una forma equivalente se le tomará por buena la respuesta de lo contrario se le alentara que siga practicando.
+
+
+
+
+Colaboradores: Mauricio Jesús Pacheco Mijangos
