@@ -3,12 +3,12 @@ import java.util.Random;
 
 public class Banco{
 	public static void main( String args[] ){
-		Fecha.fake = true;
+		
 		print("\nCreando cuentas");
 		Cliente[] clientes ={ 
-			new Cliente("Aristoteles", 	new ArrayList<Cuenta>() 	),
-			new Cliente("Platon", 		new ArrayList<Cuenta>() 	),
-			new Cliente("Quijote",	new ArrayList<Cuenta>() 	)
+			new Cliente("Andres", 	new ArrayList<Cuenta>() 	),
+			new Cliente("Mauricio", 		new ArrayList<Cuenta>() 	),
+			new Cliente("Angel",	new ArrayList<Cuenta>() 	)
 		};
 		print("\nAgregando cuentas");
 		clientes[2].agregarCuenta( new CtaAhorros(9060,2.8) 	);

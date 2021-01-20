@@ -8,7 +8,7 @@ public class CtaAhorros extends Cuenta implements Impuestos {
 
 	public void consultar(){
 		movs.put( Fecha.toDay(), "Consulta" );
-		this.saldo += ( apertura.diff(Fecha.toDay()) % 30 ) * tasa;
+		this.saldo += ( apertura.diferencia(Fecha.toDay()) % 30 ) * tasa;
 		System.out.println("\t"+this.getClass().getName() + " #" + id + " Fecha de apertura: " + apertura.toString() );
 		java.util.Iterator it = movs.keySet().iterator();
 		while(it.hasNext()){

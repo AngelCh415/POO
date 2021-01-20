@@ -27,7 +27,7 @@ public class CtaCheques extends Cuenta {
 			return;
 		}
 		if( saldo + ( sobregiro - deuda )  > monto &&
-			apertura.diff(Fecha.toDay()) < 360 ){
+			apertura.diferencia(Fecha.toDay()) < 360 ){
 			saldo = 0;
 			deuda += monto - saldo;
 			return;

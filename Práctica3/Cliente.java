@@ -22,7 +22,9 @@ public class Cliente{
 				( cta instanceof CtaCredito ) ? "Crédito" : "Generica"
 		));
 	}
-	public Cuenta obtenerCuenta(int index){return this.cuentas.get(index);}
+	public Cuenta obtenerCuenta(int index){
+		return this.cuentas.get(index);
+	}
 	public void reportarEdosCtas(){
 		System.out.println("Cliente: " + nombre +" No.Cuenta: " + numCliente );
 		cuentas.forEach( ( c ) -> c.consultar() );
