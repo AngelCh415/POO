@@ -1,12 +1,7 @@
 public interface Impuestos {
-    public double ISRm = 0.10; 
-    public double ISRa = 0.15;
-    
-    public static void pagarISRmensual() {
+	public double ISRm = 0.10;
+	public double ISRa = 0.15;
 
-    }
-    
-    public static void pagarISRanual() {
-
-    }
+	public void pagarISRmensual(); 
+	public void pagarISRanual(); 
 }
