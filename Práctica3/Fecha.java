@@ -9,6 +9,7 @@ public class Fecha{
 		this.dia = d;
 		this.mes = m;
 		this.anio= a;
+		//Perro del mal
 	}
 	public Fecha obtenerFecha(){return this;}
 	public void establecerFecha(int d, int m, int a){
