@@ -10,7 +10,9 @@ public class Fecha{
 		this.mes = m;
 		this.anio= a;
 	}
-	public Fecha obtenerFecha(){return this;}
+	public Fecha obtenerFecha(){
+		return this;
+	}
 	public void establecerFecha(int d, int m, int a){
 		this.dia = d;
 		this.mes = m;
@@ -26,13 +28,13 @@ public class Fecha{
 	}
 	public static Fecha hoy(){	//Valido de que no haya fechas extrañas
 		Random aleatorio = new Random();
-		Fecha fecha = new Fecha( aleatorio.nextInt(28)+1, aleatorio.nextInt(11)+1, aleatorio.nextInt(120)+1900);
+		Fecha fecha = new Fecha( aleatorio.nextInt(27)+1, aleatorio.nextInt(11)+1, aleatorio.nextInt(120)+1900);
 		return fecha;
 	}
 	public int sacarDia(){
 		return this.dia;
 	}
-	public int pasoAño(Fecha f){
+	public int pasoAnio(Fecha f){
 		if(this.anio < f.anio){
 			if(this.mes < f.mes){
 				return 1;

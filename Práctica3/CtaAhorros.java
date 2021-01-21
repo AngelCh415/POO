@@ -7,10 +7,11 @@ public class CtaAhorros extends Cuenta implements Impuestos {
 	}
 
 	public void consultar(){
-		mov.add(Fecha.hoy().toString()+operaciones[1]+ "\n Su saldo es: " + saldo + "mx." );
-		int mesH = Fecha.hoy().sacarMes();
-		int mesAp = apertura.sacarMes();
 		Fecha hoy = Fecha.hoy();
+		mov.add(hoy.toString()+operaciones[1]+ "\n Su saldo es: " + saldo + "mx." );
+		int mesH = hoy.sacarMes();
+		int mesAp = apertura.sacarMes();
+
 		if(mesH> mesAp){
 			if(hoy.sacarDia()> apertura.sacarDia()) this.saldo += this.saldo * tasa;
 		} 

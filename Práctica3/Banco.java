@@ -20,7 +20,6 @@ public class Banco{
 		clientes[1].agregarCuenta( new CtaAhorros(7000,2.1) 	);
 		clientes[2].agregarCuenta( new CtaCheques(300,10) 		);
 		clientes[1].agregarCuenta( new CtaCredito(10000,0.5) 	);
-
 		
 		for(int i=0; i<clientes.length; i++  ){
 			clientes[i].reportarEdosCtas();
@@ -29,16 +28,16 @@ public class Banco{
 		
 		for(int i =0; i<clientes.length;i++){
 			for(int j=0; j< 5; j++){
-				clientes[i].getCuentas().get(0).depositar(cantidad.nextInt(5000));
-				clientes[i].getCuentas().get(1).depositar(cantidad.nextInt(5000));
-				clientes[i].getCuentas().get(2).depositar(cantidad.nextInt(5000));
+				clientes[i].TomaCuentas().get(0).depositar(cantidad.nextInt(5000));
+				clientes[i].TomaCuentas().get(1).depositar(cantidad.nextInt(5000));
+				clientes[i].TomaCuentas().get(2).depositar(cantidad.nextInt(5000));
 				}
 		}	
 		for(int i=0; i<clientes.length;i++){
 			for(int j=0; j< 5; j++){
-				clientes[i].getCuentas().get(0).retirar(cantidad.nextInt(5000));
-				clientes[i].getCuentas().get(1).retirar(cantidad.nextInt(5000));
-				clientes[i].getCuentas().get(2).retirar(cantidad.nextInt(5000));
+				clientes[i].TomaCuentas().get(0).retirar(cantidad.nextInt(5000));
+				clientes[i].TomaCuentas().get(1).retirar(cantidad.nextInt(5000));
+				clientes[i].TomaCuentas().get(2).retirar(cantidad.nextInt(5000));
 				}
 		}
 		

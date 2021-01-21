@@ -11,7 +11,9 @@ public class Cliente{
 		this.cuentas = ctas;
 		this.numCliente = nom.substring(0,5) +  new Random().nextInt(500) ;
 	}
-	public ArrayList<Cuenta> getCuentas(){return cuentas;}
+	public ArrayList<Cuenta> TomaCuentas(){
+		return cuentas;
+	}
 	public void agregarCuenta(Cuenta cta){
 		cta.id =  cuentas.size() + 1 ;
 		cuentas.add(cta);
