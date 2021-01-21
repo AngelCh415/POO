@@ -8,7 +8,8 @@ public class Banco{
 		Cliente[] clientes ={ 
 			new Cliente("Andres", 	new ArrayList<Cuenta>() 	),
 			new Cliente("Mauricio", 		new ArrayList<Cuenta>() 	),
-			new Cliente("Angel",	new ArrayList<Cuenta>() 	)
+			new Cliente("Angel",	new ArrayList<Cuenta>() 	),
+			new Cliente ("JJ", new ArrayList <Cuenta>())
 		};
 		print("\nAgregando cuentas");
 		clientes[2].agregarCuenta( new CtaAhorros(9060,2.8) 	);
