@@ -6,10 +6,9 @@ public class CtaCheques extends Cuenta {
 		super( saldo );
 		sobregiro = sobre;
 	}
-	public double getSobregiro(){return sobregiro;}
-	public void setSobregiro(double x){sobregiro=x;}
+	
 	public void depositar(double monto){
-		regD(monto);;
+		mov.add(Fecha.hoy().toString()+ operaciones[0]+ "\n Su nuevo saldo es: " + saldo + "mx." );
 		if( deuda > 0 )
 			if( deuda > monto ){
 				deuda -= monto;
@@ -21,17 +20,16 @@ public class CtaCheques extends Cuenta {
 		saldo += monto;
 	}
 	public void retirar(double monto){
-		regR(monto);
+		mov.add(Fecha.hoy().toString()+ operaciones[2]+ "\n Su nuevo saldo es: " + saldo + "mx." );
 		if( saldo > monto ){
 			saldo -= monto;
 			return;
 		}
-		if( saldo + ( sobregiro - deuda )  > monto &&
-			apertura.diferencia(Fecha.toDay()) < 360 ){
+		if( saldo + ( sobregiro - deuda )  > monto && apertura.pasoAño(Fecha.hoy()) ==1 ){
 			saldo = 0;
 			deuda += monto - saldo;
 			return;
 		}
-		System.out.println("LOG: Su cuenta no es capaz de retirar el monto solicitado");
+		System.out.println("No hay suficientes fondos en su cuenta");
 	}
 }

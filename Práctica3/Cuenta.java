@@ -1,55 +1,42 @@
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class Cuenta{
 	protected int id;
 	protected double saldo;
 	protected Fecha apertura;
-	protected Map<Fecha, String> movs;
+	public ArrayList<String> mov; 
+	public String[] operaciones = new String []{"Deposito", "Consulta", "Retiro"};
 
 	public Cuenta(double saldo){
-		this( 0, Fecha.toDay(), saldo );
+		this( 0, Fecha.generadora(), saldo );
 	}
 
 	public Cuenta(int id, Fecha apertura, double saldo ){
 		this.id = id;
 		this.apertura = apertura;
 		this.saldo = saldo;
-		movs = new HashMap<Fecha, String>();
+		mov = new ArrayList<>();
+		
 	}
 	public void consultar(){
-		regC(saldo);
-		System.out.println("\t"+this.getClass().getName() + " #" + id + " Fecha de apertura: " + apertura.toString() + " Saldo actual: $" + saldo );
-		java.util.Iterator it = movs.keySet().iterator();
-		while(it.hasNext()){
-			Fecha key = ( Fecha ) it.next();
-			System.out.println( "\t\t"+movs.get(key) + " Fecha: " + key.toString() );
+		mov.add(Fecha.hoy().toString()+operaciones[1]+ "\n Su saldo es: " + saldo + "mx." );
+		for(int i=0;i < mov.size(); i++){
+			System.out.println(mov.get(i));
 		}
 	}
 	public void depositar(double monto){
 		saldo += monto;
-		regD(monto);
+	
+		mov.add(Fecha.hoy().toString()+ operaciones[0]+ "\n Su nuevo saldo es: " + saldo + "mx." );
 	}
 	public void retirar(double monto){
 		if( monto <= saldo ){
 			saldo -= monto;
-			regR(monto);
+			mov.add(Fecha.hoy().toString()+ operaciones[2]+ "\n Su nuevo saldo es: " + saldo + "mx." );
+		}else{
+			System.out.println("No tiene suficiente dinero ");
 		}
 	}
-
-	public void regD(double monto){
-		movs.put( Fecha.toDay(), "Deposito: Monto: $"+monto );
-	}
-
-	public void regR(double monto){
-		movs.put( Fecha.toDay(), "Retiro: Saldo: $"+monto );
-	}
-
-	public void regC(double monto){
-		movs.put( Fecha.toDay(), "Consulta: Saldo: $"+monto );
-	}
-
-	public void setId( int id ){ this.id = id; }
-	public int getId(){ return this.id; }
 }

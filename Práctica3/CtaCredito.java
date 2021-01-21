@@ -5,9 +5,10 @@ public class CtaCredito extends Cuenta {
 	public CtaCredito(double saldo, double tasa){
 		super( saldo );
 		deficit = 0;
+		this.tasa = tasa;
 	}
 	public void depositar(double monto){
-		regD(monto);
+		mov.add(Fecha.hoy().toString()+ operaciones[0]+ "\n Su nuevo saldo es: " + saldo + "mx." );
 		if( deficit > 0 )
 			if( deficit > monto ){
 				deficit -= monto;
@@ -19,7 +20,7 @@ public class CtaCredito extends Cuenta {
 		saldo += monto;
 	}
 	public void retirar(double monto){
-		regR(monto);
+		mov.add(Fecha.hoy().toString()+ operaciones[2]+ "\n Su nuevo saldo es: " + saldo + "mx." );
 		if( monto <= saldo ){
 			saldo -= monto;
 			return;

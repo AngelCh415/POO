@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Cliente{
@@ -14,19 +13,16 @@ public class Cliente{
 	}
 	public ArrayList<Cuenta> getCuentas(){return cuentas;}
 	public void agregarCuenta(Cuenta cta){
-		cta.setId( cuentas.size() + 1 );
+		cta.id =  cuentas.size() + 1 ;
 		cuentas.add(cta);
-		System.out.println("LOG: Cliente " + nombre + " tiene nueva cuenta #" + cta.getId() + " de " + (
-				( cta instanceof CtaAhorros ) ? "Ahorros" :
-				( cta instanceof CtaCheques ) ? "Cheques" :
-				( cta instanceof CtaCredito ) ? "Crédito" : "Generica"
-		));
 	}
 	public Cuenta obtenerCuenta(int index){
 		return this.cuentas.get(index);
 	}
 	public void reportarEdosCtas(){
 		System.out.println("Cliente: " + nombre +" No.Cuenta: " + numCliente );
-		cuentas.forEach( ( c ) -> c.consultar() );
+		for(int i=0; i< cuentas.size();i++){
+			cuentas.get(i).consultar();
+		}
 	}
 }

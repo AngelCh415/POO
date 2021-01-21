@@ -7,14 +7,16 @@ public class CtaAhorros extends Cuenta implements Impuestos {
 	}
 
 	public void consultar(){
-		movs.put( Fecha.toDay(), "Consulta" );
-		this.saldo += ( apertura.diferencia(Fecha.toDay()) % 30 ) * tasa;
-		System.out.println("\t"+this.getClass().getName() + " #" + id + " Fecha de apertura: " + apertura.toString() );
-		java.util.Iterator it = movs.keySet().iterator();
-		while(it.hasNext()){
-			Fecha key = ( Fecha ) it.next();
-			System.out.println( "\t\t"+ movs.get(key) + ": " + key.toString() );
-		}
+		mov.add(Fecha.hoy().toString()+operaciones[1]+ "\n Su saldo es: " + saldo + "mx." );
+		int mesH = Fecha.hoy().sacarMes();
+		int mesAp = apertura.sacarMes();
+		Fecha hoy = Fecha.hoy();
+		if(mesH> mesAp){
+			if(hoy.sacarDia()> apertura.sacarDia()) this.saldo += this.saldo * tasa;
+		} 
+			for(int i=0;i < mov.size(); i++){
+				System.out.println(mov.get(i));
+			}
 	}
 	public void pagarISRmensual(){
 		if( saldo > 10000 )
